@@ -1,3 +1,5 @@
 from django.contrib import admin
+from MyTextSummarizer.models import Sentance,File
 
-# Register your models here.
+admin.site.register(Sentance)
+admin.site.register(File)

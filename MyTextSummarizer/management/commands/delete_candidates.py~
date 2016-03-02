@@ -1,0 +1,10 @@
+from django.core.management.base import BaseCommand
+from politicaApp.models import Statement
+
+
+class Command(BaseCommand):
+    help = 'Delete the Statement objects from database'
+
+    def handle(self, *args, **options):
+        Statement.objects.all().delete()
+        pass

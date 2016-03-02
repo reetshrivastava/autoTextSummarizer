@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>List</title>
+   <link href="{% static 'bootstrap/bootstrap.css' %}" rel="stylesheet" media="screen">
+   <link href="{% static 'graphs.css' %}" rel="stylesheet" media="screen">
+   <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}" type="text/css">
+
+<body>
+
+<div class = "row">
+		</br></br></br></br>
+		<h1 style="text-align:center;">Automatic Text Summarizer</h1>
+		</br></br>
+		<div class="col-md-offset-3">
+		<h3>Add text to be summarized</h3>
+		<form action="/summarize/" method="post">{% csrf_token %}
+		<textarea rows="10" cols="80" name="text" style="text-align:center;">
+		</textarea><br/>
+		</div>
+		<center>
+			</br>
+			<input type="submit" value="Summarize" style="align:"/>
+		</center>
+		</form>
+		
+		</br>
+		<div class="col-md-offset-3">
+			<h3>Upload a file</h3>
+		<form action="/fileupload/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="myfile" />
+            <p><input type="submit" value="Upload" /></p>
+        </form>
+       	</div>
+		</body>
+	</div>
+</div>
+
+
+  <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script> 
+<script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+
+  
+
+</body>
+</html>
