@@ -1,12 +1,10 @@
 from stop_words import get_stop_words
 from MyTextSummarizer.splitTextIntoSentences import splitText
-from MyTextSummarizer.models import Sentance, Word
-from MyTextSummarizer.CountFrequency import countfrequency, setfrequency
-from operator import itemgetter
+from MyTextSummarizer.models import Word
+from MyTextSummarizer.CountFrequency import  setfrequency
 from MyTextSummarizer.splitSentencesIntoWords import splitSentences
 import datetime
 from nltk import PorterStemmer
-from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist
 class Sentances():
     def __init__(self,order,statement,score):
@@ -41,8 +39,7 @@ def summary(text,depth):
         sentences_to_save.append(k)
     print "loop1end:"
     print  datetime.datetime.time(datetime.datetime.now())
-    print "\n"    
-    words = splitSentences(text)        
+    print "\n"         
     for s in sentences_to_save:
         totalscore = 0
         swords = s.statement.split()
@@ -93,21 +90,3 @@ def summary(text,depth):
     params["summarycount"] = summary_word_count
     Word.objects.all().delete()
     return params
-    '''out_sentences_list = list()
-    for os in out_sentences:
-        out_sentences_list.append(os.statement)
-    i = 0
-    lowest_object = list()
-    while(i<2):
-        lowest = 999
-        for os in out_sentences_list:
-            o = sentences_to_save.get(statement = os)
-            if o.order < lowest:
-                lowest = o.order
-        ho = sentences_to_save.get(order = lowest)  
-        lowest_object.append(ho)
-        out_sentences_list.remove(ho.statement)
-        i = i + 1
-    params["summary"] = lowest_object
-    #Sentance.objects.all().delete()
-    return params'''
