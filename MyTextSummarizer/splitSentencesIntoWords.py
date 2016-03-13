@@ -7,6 +7,5 @@ def splitSentences(sentence):
             word = word[:-1]
             words.append(word)
             word = ' '
-    print words
     return words
             

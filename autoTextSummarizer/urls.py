@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/',views.index),
     url(r'^summarize/',views.summarize),
-    url(r'^fileupload/',views.fileupload)
-     
+    url(r'^fileupload/',views.fileupload),
+    url(r'^imageupload/',views.imageupload) 
     
 ]
