@@ -174,14 +174,14 @@ body {
 		<h1 style="text-align:center;color:rgb(66, 139, 202)">Automatic Text Summarizer</h1>
 		</br></br>
 		<div class="col-md-offset-3">
-		<h3 style="color:rgb(66, 139, 202)">Add text to be summarized</h3>
-		<form action="/summarize/" method="post">{% csrf_token %}
-		<textarea rows="10" cols="80" name="text" style="text-align:center;">
-		</textarea><br/>
+			<h3 style="color:rgb(66, 139, 202)">Add text to be summarized</h3>
+			<form action="/summarize/" method="post" enctype="multipart/form-data">{% csrf_token %}
+				<textarea rows="10" cols="80" name="text" style="text-align:center;">
+				</textarea><br/>
 		</div>
 		<center>
 			</br>
-			<input type="submit" value="Summarize" style="color:rgb(66, 139, 202)"/>
+			<input type="submit" value="Summarize" name="button" style="color:rgb(66, 139, 202)"/>
         </div>
       </div>
 		</center>
@@ -193,26 +193,21 @@ body {
           		</div>
 			</div>
 		</div>
-		</form>
-		
 		</br>
 		<center><h2 style="color:rgb(66, 139, 202)">Or</h2></center>
 		<div class="row">
 			<div class="col-md-offset-3 col-md-3">
 				<h3 style="color:rgb(66, 139, 202)">Upload a file</h3>
-				<form action="/fileupload/" method="post" enctype="multipart/form-data">
-	            	{% csrf_token %}
 	            	<input type="file" name="myfile"/>
-	            	<p><input type="submit" value="Upload" name="file" /></p>
-	        	</form>
+	            	<p><input type="submit" value="Upload File" name="button" /></p>
+	    
        		</div>
        		<div class="col-md-offset-7">
 				<h3 style="color:rgb(66, 139, 202)">Upload an image</h3>
-				<form action="/imageupload/" method="post" enctype="multipart/form-data">
-            		{% csrf_token %}
+				
             		<input type="file" name="myfile" />
-            		<p><input type="submit" value="Upload" name="image" /></p>
-        		</form>
+            		<p><input type="submit" value="Upload Image" name="button" /></p>
+      
         	</div>
        	</div>
 		</body>

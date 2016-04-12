@@ -6,6 +6,7 @@ from MyTextSummarizer.splitSentencesIntoWords import splitSentences
 import datetime
 from nltk import PorterStemmer
 from django.core.exceptions import ObjectDoesNotExist
+from MyTextSummarizer.texttospeech import text_to_speech
 class Sentances():
     def __init__(self,order,statement,score):
         self.order = order
@@ -85,8 +86,10 @@ def summary(text,depth):
     print  datetime.datetime.time(datetime.datetime.now())
     print "\n"
     ordered_important_sentences = sorted(important_sentences,key=Sentances.getorderkey)
+    tospeak = text_to_speech(ordered_important_sentences)
     params["summary"]=ordered_important_sentences
     params["originalcount"] = original_word_count
     params["summarycount"] = summary_word_count
+    params["tospeak"] = tospeak
     Word.objects.all().delete()
     return params

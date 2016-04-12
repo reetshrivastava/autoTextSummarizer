@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^index/',views.index),
     url(r'^summarize/',views.summarize),
     url(r'^fileupload/',views.fileupload),
-    url(r'^imageupload/',views.imageupload) 
+    url(r'^imageupload/',views.imageupload),
+    url(r'^downloadfile/',views.downloadfile)
     
 ]

@@ -5,30 +5,56 @@
 
 <title>List</title>
    <link href="{% static 'bootstrap/bootstrap.css' %}" rel="stylesheet" media="screen">
-   <link href="{% static 'graphs.css' %}" rel="stylesheet" media="screen">
-   <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}" type="text/css">
-
+<style>
+	@font-face 
+	{
+  	font-family: "Handwritten";
+  	src: url('../static/Sacramento-Regular.ttf') format("truetype");
+	}
+	h2
+	{
+		font-family:"Handwritten";
+		font-size:60px;
+	}
+	body
+	{
+		background-color:#5cb85c;
+	}
+</style> 
+</head>
 <body>
 	<div class="row">
-	<div class="col-md-offset-3 col-md-6">
+	<div class="container">
 			</br></br>
-			<center>
-			<h2>Generated Summary</h2>
+			<!--  <h3 style="color:rgb(66, 139, 202)">Original word count:{{ originalcount }}</h3>
+			<h3 style="color:rgb(66, 139, 202)">Summary word count:{{ summarycount }}</h3> -->
+			<div class="card text-xs-center">
+  				<div class="card-header">
+    				<h3>Automatic Text Summarizer</h3>
+  				</div>
+  				<div class="card-block">
+    				<h4 class="card-title">Summary</h4>
+    				<p class="card-text">
+    					{% for s in summary %}
+							{{ s.statement }}.
+						{% endfor %}
+    				</p>
+    				<a href="/downloadfile" class="btn btn-primary">Download as Text</a>
+  				</div>
+  				<div class="card-footer text-muted">
+    				{{summarycount }} words
+  				</div>
+			 <input onclick='responsiveVoice.speak("{{tospeak}}");' type='button' value='🔊 Play' />
 			</br>
-			</center>
-			<h3>Original word count:{{ originalcount }}</h3>
-			<h3>Summary word count:{{ summarycount }}</h3>
-			<p>
-				{% for s in summary %}
-					{{ s.statement }}.
-				{% endfor %}
-			</p>
+			<!--<a href="/downloadfile">Download as Text File</a>
+			<img class="card-img-bottom" data-src="test.jpg" alt="Card image cap">-->
 	</div>
 	</div>
 
   <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script> 
 <script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
-
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+<script src='//vws.responsivevoice.com/v/e?key=jdRHxZYZ'></script>
   
 
 </body>
