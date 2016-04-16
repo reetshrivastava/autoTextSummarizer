@@ -20,6 +20,11 @@
 	{
 		background-color:#5cb85c;
 	}
+	::selection 
+	{
+    	color:black; 
+    	background:white;
+	}
 </style> 
 </head>
 <body>
@@ -44,7 +49,11 @@
   				<div class="card-footer text-muted">
     				{{summarycount }} words
   				</div>
-			 <input onclick='responsiveVoice.speak("{{tospeak}}");' type='button' value='🔊 Play' />
+  			<label>Voice Controls</label>
+  			 <input onclick='responsiveVoice.speak("{{tospeak}}","Hindi Female");' type='button' value='Play' />
+			 <input onclick='responsiveVoice.cancel();' type='button' value='Stop' />
+			 <input onclick='responsiveVoice.pause();'  type='button' value='Pause'/>
+			 <input onclick='responsiveVoice.resume();'  type='button' value='Resume'/>
 			</br>
 			<!--<a href="/downloadfile">Download as Text File</a>
 			<img class="card-img-bottom" data-src="test.jpg" alt="Card image cap">-->
@@ -54,8 +63,11 @@
   <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script> 
 <script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
 <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
-<script src='//vws.responsivevoice.com/v/e?key=jdRHxZYZ'></script>
-  
-
+<!-- <script src='//vws.responsivevoice.com/v/e?key=jdRHxZYZ'></script> -->
+<script type="text/javascript">
+	  responsiveVoice.OnVoiceReady = function() {
+		  responsiveVoice.speak("{{tospeak}}","Hindi Female");
+	};
+</script>
 </body>
 </html>
